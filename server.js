@@ -26,7 +26,7 @@ const database = {};
 app.use(bodyParser.json());
 app.use(cors());
 app.get('/', (req, res) => {
-  res.send(database.users);
+  res.send('정상 작동');
 });
 
 app.get('/profile/:id', (req, res) => {
