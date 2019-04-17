@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  # Backend API
+  smart-brain-api:
+    container_name: backend
+    # image: node:8.11.1
+    build: ./
+    command: npm start
+    working_dir: /usr/src/smart-brain-api
+
+    # DB 정보
+    environment:
+      # postgres uri
+      POSTGRES_URI: postgres://admin:password@postgres:5432/smart-brain-docker
+
+    # postgres 서비스 연결
+    links:
+      - postgres
+
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./:/usr/src/smart-brain-api
+
+  # Postgres
+  postgres:
+    #postgres 환경변수
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: smart-brain-docker
+      POSTGRES_HOST: postgres
+    build: ./postgres
+    ports:
+      - '5432:5432'
