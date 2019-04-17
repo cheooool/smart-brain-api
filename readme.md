@@ -1,5 +1,7 @@
 # Smart-Brain-API-Docker
 
+image url을 입력 했을 때 사진내에서 얼굴을 찾아주는 API 서비스
+
 ## 사용 기술
 
 - express / nodejs
