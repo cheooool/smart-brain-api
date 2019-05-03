@@ -20,10 +20,12 @@ const handleSignin = (db, bcrypt) => (req, res) => {
             res.status(400).json('사용자 정보를 가져오지 못했습니다.')
           );
       } else {
-        res.status(400).json('이메일 또는 패스워드가 잘모되었습니다.');
+        res.status(400).json('이메일 또는 패스워드가 잘못되었습니다.');
       }
     })
-    .catch(err => res.status(400).json('사용자 정보가 잘못되었습니다.'));
+    .catch(err =>
+      res.status(400).json('이메일 또는 패스워드가 잘못되었습니다.')
+    );
 };
 
 module.exports = {
